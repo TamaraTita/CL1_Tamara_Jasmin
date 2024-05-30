@@ -1,12 +1,28 @@
-document.addEventListener("DOMContentLoaded", function() {
-  var slides = document.querySelectorAll(".slide");
-  var currentSlide = 0;
-  
-  function nextSlide() {
-      slides[currentSlide].classList.remove("active");
-      currentSlide = (currentSlide + 1) % slides.length;
-      slides[currentSlide].classList.add("active");
-  }
+var slideIndex = 0;
+showSlides();
 
-  setInterval(nextSlide, 5000); // Automatischer Wechsel alle 5 Sekunden
-});
+function showSlides() {
+    console.log(slideIndex)
+    var i;
+    var slides = document.getElementsByClassName("mySlides");
+    var dots = document.getElementsByClassName("dot");
+    for (i = 0; i < slides.length; i++) {
+        slides[i].style.display = "none";  
+    }
+    slideIndex++;
+    if (slideIndex > slides.length) {slideIndex = 1}    
+    for (i = 0; i < dots.length; i++) {
+        dots[i].className = dots[i].className.replace(" active-slide", "");
+    }
+    slides[slideIndex-1].style.display = "block";  
+    slides[slideIndex-1].className += " fade";
+    dots[slideIndex-1].className += " active-slide";
+}
+
+function plusSlides(n) {
+    showSlides();
+}
+
+function currentSlide(n) {
+    showSlides(slideIndex = n);
+}

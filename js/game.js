@@ -1,89 +1,143 @@
-/* JS Code, der nur auf der Game Page verwendet wird */
+var board = Array(9).fill(null);
+var currentPlayer = 'Player';
+var gameIsRunning = true;
 
-const dino = document.getElementById("game-dino");
-const rock = document.getElementById("game-rock");
-const score = document.getElementById("game-score");
-const gameBox = document.getElementById("game");
-const background = document.getElementById("game-background");
-const gameOver = document.getElementById("game-end");
-const winnerText = document.getElementById("game-winner");
-const startScreen = document.getElementById("game-start");
-
-let gameLoopInterval = 0;
-const POINTS_TO_WIN = 100;
-
-const startGame = () => {
-  gameOver.classList.add("hidden");
-  background.classList.add("bg-animation");
-  rock.classList.add("rock-animation");
-  startScreen.classList.add("hidden");
-  resetScore();
-  startGameLoop();
-};
-
-const resetScore = () => {
-  score.innerText = 0;
-};
-
-const jump = () => {
-  dino.classList.add("jump-animation");
-  setTimeout(() => {
-    dino.classList.remove("jump-animation");
-  }, 500);
-};
-
-const dieAnimation = () => {
-  dino.classList.add("dino-dies");
-  return new Promise((resolve) =>
-    setTimeout(() => {
-      dino.classList.remove("dino-dies");
-      resolve();
-    }, 500)
-  );
-};
-
-gameBox.addEventListener("click", () => {
-  if (!gameLoopInterval) {
-    startGame();
-  }
+document.querySelectorAll('.cell').forEach((cell, i) => {
+    cell.addEventListener('click', () => {
+        if (gameIsRunning && !board[i]) {
+            board[i] = currentPlayer;
+            cell.style.backgroundImage = `url(images/game/${currentPlayer}.png)`;
+            currentPlayer = currentPlayer === 'Player' ? 'Bot' : 'Player';
+            checkGameStatus();
+            if (gameIsRunning && currentPlayer === 'Bot') {
+                makeBotMove();
+            }
+        }
+    });
 });
 
-window.addEventListener("keypress", () => {
-  console.log("hello");
-  if (!dino.classList.contains("jump-animation")) {
-    console.log("juw");
-    jump();
-  }
-});
+function makeBotMove() {
+    let bestScore = -Infinity;
+    let move;
+    for (let i = 0; i < board.length; i++) {
+        if (board[i] === null) {
+            board[i] = 'Bot';
+            let score = minimax(board, 0, false);
+            board[i] = null;
+            if (score > bestScore) {
+                bestScore = score;
+                move = i;
+            }
+        }
+    }
+    board[move] = 'Bot';
+    document.querySelectorAll('.cell')[move].style.backgroundImage = `url(images/game/Bot.png)`;
+    currentPlayer = 'Player';
+    checkGameStatus();
+}
 
-const stopGame = async () => {
-  await dieAnimation();
-  background.classList.remove("bg-animation");
-  rock.classList.remove("rock-animation");
-  startScreen.classList.remove("hidden");
-  gameLoopInterval = clearInterval(gameLoopInterval);
-  gameOver.classList.remove("hidden");
-  if (Number(score.innerText) + 1 >= POINTS_TO_WIN) {
-    winnerText.classList.remove("hidden");
-  }
-};
+function minimax(board, depth, isMaximizing) {
+    let winner = checkWinner();
+    if (winner !== null) {
+        return winner === 'Bot' ? 1 : winner === 'Player' ? -1 : 0;
+    }
 
-const startGameLoop = () => {
-  gameLoopInterval = window.setInterval(() => {
-    const dinoTop = parseInt(
-      window.getComputedStyle(dino).getPropertyValue("top")
-    );
-    const rockLeft = parseInt(
-      window.getComputedStyle(rock).getPropertyValue("left")
-    );
-    score.innerText = Number(score.innerText) + 1;
-    if (rockLeft < 0) {
-      rock.classList.add("hidden");
+    if (isMaximizing) {
+        let bestScore = -Infinity;
+        for (let i = 0; i < board.length; i++) {
+            if (board[i] === null) {
+                board[i] = 'Bot';
+                let score = minimax(board, depth + 1, false);
+                board[i] = null;
+                bestScore = Math.max(score, bestScore);
+            }
+        }
+        return bestScore;
     } else {
-      rock.classList.remove("hidden");
+        let bestScore = Infinity;
+        for (let i = 0; i < board.length; i++) {
+            if (board[i] === null) {
+                board[i] = 'Player';
+                let score = minimax(board, depth + 1, true);
+                board[i] = null;
+                bestScore = Math.min(score, bestScore);
+            }
+        }
+        return bestScore;
     }
-    if (rockLeft < 50 && rockLeft > 0 && dinoTop > 150) {
-      stopGame();
+}
+
+function checkWinner() {
+    const winningCombinations = [
+        [0, 1, 2],
+        [3, 4, 5],
+        [6, 7, 8],
+        [0, 3, 6],
+        [1, 4, 7],
+        [2, 5, 8],
+        [0, 4, 8],
+        [2, 4, 6]
+    ];
+
+    for (const combination of winningCombinations) {
+        if (board[combination[0]] && board[combination[0]] === board[combination[1]] && board[combination[0]] === board[combination[2]]) {
+            return board[combination[0]];
+        }
     }
-  }, 50);
-};
+
+    if (!board.includes(null)) {
+        return 'draw';
+    }
+
+    return null;
+}
+
+function checkGameStatus() {
+    const winningCombinations = [
+        [0, 1, 2],
+        [3, 4, 5],
+        [6, 7, 8],
+        [0, 3, 6],
+        [1, 4, 7],
+        [2, 5, 8],
+        [0, 4, 8],
+        [2, 4, 6]
+    ];
+
+    for (const combination of winningCombinations) {
+        if (board[combination[0]] && board[combination[0]] === board[combination[1]] && board[combination[0]] === board[combination[2]]) {
+            gameIsRunning = false;
+            setTimeout(() => {
+                console.log(board[combination[0]]);
+                showPopup(board[combination[0]] === 'Player' ? 'Du hast eine Tour gewonnen. Herzlichen Glückwunsch!' : 'Du hast leider verloren. Versuche es erneut!');
+            }, 100);
+            return;
+        }
+    }
+
+    if (!board.includes(null)) {
+        gameIsRunning = false;
+        showPopup('Du hast eine Tour gewonnen. Herzlichen Glückwunsch');
+    }
+}
+
+function showPopup(message) {
+    document.getElementById('overlay').classList.remove('hidden');
+    document.getElementById('popup').classList.remove('hidden');
+    document.getElementById('popup-message').textContent = message;
+}
+
+document.getElementById('popup-button').addEventListener('click', () => {
+    document.getElementById('overlay').classList.add('hidden');
+    document.getElementById('popup').classList.add('hidden');
+    restartGame();
+});
+
+document.getElementById('restart-button').addEventListener('click', restartGame);
+
+function restartGame() {
+    board = Array(9).fill(null);
+    currentPlayer = 'Player';
+    gameIsRunning = true;
+    document.querySelectorAll('.cell').forEach(cell => cell.style.backgroundImage = '');
+}
