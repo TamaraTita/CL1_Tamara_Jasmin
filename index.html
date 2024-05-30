@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MTDolomites - Erleben Sie die Schönheit der Dolomiten</title>
+    <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="css/nav.css">
+    <link rel="stylesheet" href="css/hero.css">
+    <link rel="stylesheet" href="css/tours.css">
+    <link rel="stylesheet" href="css/footer.css">
+    <link rel="stylesheet" href="css/slider.css">
+    <link rel="stylesheet" href="css/hero-detail.css">
+    <link rel="stylesheet" href="css/game.css">
+</head>
+
+<body>
+    <header>
+        <nav class="navbar">
+            <img src="images/Logo.png" alt="Logo" class="logo">
+            <ul class="nav-links">
+                <li class="active"><a href="index.html">Home</a></li>
+                <li><a href="tours.html">Unsere Touren</a></li>
+            </ul>
+            <div class="burger">
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
+        </nav>
+    </header>
+    <main>
+        <section class="hero">
+            <div class="hero-text">
+                <h1>Die Schönheit der Dolomiten hautnah erleben</h1>
+                <p>Mit MTDolomites unvergessliche Bike, Ski- und Wandertouren in den atemberaubenden Dolomiten geniessen. Entdecke die Vielfalt der Landschaft und erlebe unvergessliche Abenteuer. </p>
+                <a href="tours.html" class="btn">Jetzt buchen</a>
+            </div>
+        </section>
+        <section class="tours">
+            <div class="tour">
+                <img src="images/bike-tour.jpg" alt="Tour 1">
+                <h3>Mountainbike-Tour</h3>
+                <p>Abwechslungsreiche Mountainbiketouren in den majestätischen Dolomiten: Wo atemberaubende Landschaften und anspruchsvolle Trails auf dich warten. </p>
+                <a href="tours.html" class="btn">Mehr erfahren</a>
+            </div>
+            <div class="tour">
+                <img src="images/ski-tour.jpg" alt="Tour 2">
+                <h3>Skitour</h3>
+                <p>Verschneite Landschaften bestaunen: Mit den Skiern entlang faszinierender Felswände neue Höhen meistern.</p>
+                <a href="tours.html" class="btn">Mehr erfahren</a>
+            </div>
+            <div class="tour">
+                <img src="images/hike-tour.jpg" alt="Tour 3">
+                <h3>Wandertour</h3>
+                <p>Zu Fuss meilenweites Panorama erleben: Mit atemberaubenden Ausblicken die Gipfel der Dolomiten erklimmen. </p>
+                <a href="tours.html" class="btn">Mehr erfahren</a>
+            </div>
+            <div class="tour">
+                <img src="images/rock-climbing-tour.jpg" alt="Tour 4">
+                <h3>Klettertour</h3>
+                <p>Erleben Sie die Dolomiten beim Klettern. Unsere Guides zeigen Ihnen die schönsten Kletterrouten.</p>
+                <a href="tours.html" class="btn">Mehr erfahren</a>
+            </div>
+            <div class="tour">
+                <img src="images/paragliding-tour.jpg" alt="Tour 5">
+                <h3>Paragliding-Tour</h3>
+                <p>Erleben Sie die Dolomiten vom Himmel aus. Unsere Guides zeigen Ihnen die schönsten Paragliding-Spots.</p>
+                <a href="tours.html" class="btn">Mehr erfahren</a>
+            </div>
+            <div class="tour">
+                <img src="images/rafting-tour.jpg" alt="Tour 6">
+                <h3>Rafting-Tour</h3>
+                <p>Erleben Sie die Dolomiten auf dem Wasser. Unsere Guides zeigen Ihnen die aufregendsten Rafting-Routen.</p>
+                <a href="tours.html" class="btn">Mehr erfahren</a>
+            </div>
+        </section>
+        <section class="images">
+            <div class="slideshow-container">
+                <div class="mySlides fade">
+                    <img src="images/dolomites1.jpg" style="width:100%">
+                </div>
+
+                <div class="mySlides fade">
+                    <img src="images/dolomites2.jpg" style="width:100%">
+                </div>
+
+                <div class="mySlides fade">
+                    <img src="images/dolomites3.jpg" style="width:100%">
+                </div>
+
+                <!-- Add more slides as needed -->
+
+                <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+                <a class="next" onclick="plusSlides(1)">&#10095;</a>
+            </div>
+            <br>
+
+            <div style="text-align:center">
+                <span class="dot" onclick="currentSlide(0)"></span>
+                <span class="dot" onclick="currentSlide(1)"></span>
+                <span class="dot" onclick="currentSlide(2)"></span>
+                <!-- Add more dots as needed -->
+            </div>
+        </section>
+        <h1>Gewinnspiel</h1>
+        <p>Mit etwas Glück kannst du eine Tour deiner Wahl gewinnen. </p>
+        <section class="game">
+            <div id="tic-tac-toe-board">
+                <div class="cell"></div>
+                <div class="cell"></div>
+                <div class="cell"></div>
+                <div class="cell"></div>
+                <div class="cell"></div>
+                <div class="cell"></div>
+                <div class="cell"></div>
+                <div class="cell"></div>
+                <div class="cell"></div>
+            </div>
+            <div id="overlay" class="hidden"></div>
+            <div id="popup" class="hidden">
+                <h2 id="popup-message"></h2>
+                <button id="popup-button">OK</button>
+            </div>
+            <button id="restart-button">Restart</button>
+        </section>
+    </main>
+    <footer>
+        <div class="footer-content">
+            <div class="contact-info">
+                <h3>Adresse:</h3>
+                <p>S.da Nives, 36, 39048 Selva di Val Gardena </p>
+                <h3>Kontakt:</h3>
+                <p>info@mtdolomites.it</p>
+            </div>
+            <div class="social-media">
+                <h3>Folge uns</h3>
+                <a href="https://www.facebook.com" target="_blank"><img src="images/sozialmedia/facebook.png"
+                        alt="Facebook"></a>
+                <a href="https://www.instagram.com" target="_blank"><img src="images/sozialmedia/instagram.png"
+                        alt="Instagram"></a>
+                <a href="https://www.linkedin.com" target="_blank"><img src="images/sozialmedia/linkedin.png"
+                        alt="LinkedIn"></a>
+                <a href="https://www.youtube.com" target="_blank"><img src="images/sozialmedia/youtube.png"
+                        alt="YouTube"></a>
+            </div>
+            <div class="copyright">
+                <hr>
+                <p>2024 MTDolomites | Gruppe 1:  Reichlin & Tita | Das ist ein Schulprojekt und keine reale Webseite</p>
+            </div>
+        </div>
+    </footer>
+    <script src="js/index.js"></script>
+    <script src="js/nav.js"></script>
+    <script src="js/slider.js"></script>
+    <script src="js/game.js"></script>
+</body>
+
+</html>

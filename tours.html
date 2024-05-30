@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MTDolomites - Unsere Touren</title>
+    <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="css/nav.css">
+    <link rel="stylesheet" href="css/tours-details.css">
+    <link rel="stylesheet" href="css/footer.css">
+    <link rel="stylesheet" href="css/form.css">
+    <link rel="stylesheet" href="css/hero.css">
+    <link rel="stylesheet" href="css/hero-detail.css">
+</head>
+
+<body>
+    <header>
+        <nav class="navbar">
+            <img src="images/Logo.png" alt="Logo" class="logo">
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li class="active"><a href="tours.html">Unsere Touren</a></li>
+            </ul>
+            <div class="burger">
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
+        </nav>
+    </header>
+    <main>
+        <section class="tours">
+            <div class="tour">
+                <img src="images/bike-tour.jpg" alt="Tour 1">
+                <div>
+                    <h3>Mountainbike-Tour</h3>
+                    <p>Erleben Sie unvergessliche Abenteuer auf unseren Mountainbike-Touren durch die atemberaubende
+                        Landschaft der Dolomiten. Entdecken Sie herausfordernde Trails und genießen Sie die spektakuläre
+                        Aussicht auf die majestätischen Berge.</p>
+                    <p>Preis: CHF 50 </p>
+                    <p>Bewertung: ★★★★☆</p>
+                </div>
+            </div>
+            <div class="tour">
+                <img src="images/ski-tour.jpg" alt="Tour 2">
+                <div>
+                    <h3>Skitour</h3>
+                    <p>Erleben Sie die Faszination der Dolomiten auf unseren Ski-Touren, die sowohl für Anfänger als
+                        auch für erfahrene Skifahrer geeignet sind. Gleiten Sie durch malerische Winterlandschaften und
+                        genießen Sie die beeindruckenden Panoramablicke auf die verschneiten Gipfel.</p>
+                    <p>Preis: CHF 60</p>
+                    <p>Bewertung: ★★★★★☆</p>
+                </div>
+            </div>
+            <div class="tour">
+                <img src="images/hike-tour.jpg" alt="Tour 3">
+                <div>
+                    <h3>Wandertour</h3>
+                    <p>Entdecken Sie die natürliche Schönheit der Dolomiten auf unseren geführten Wander-Touren, die für
+                        jedes Fitnesslevel geeignet sind. Erkunden Sie unberührte Pfade und genießen Sie die Ruhe und
+                        den Frieden der alpinen Landschaft.</p>
+                    <p>Preis: CHF 40</p>
+                    <p>Bewertung: ★★★★☆</p>
+                </div>
+            </div>
+            <div class="tour">
+                <img src="images/rock-climbing-tour.jpg" alt="Tour 4">
+                <div>
+                    <h3>Klettertour</h3>
+                    <p>Erleben Sie die Dolomiten beim Klettern. Unsere Guides zeigen Ihnen die schönsten Kletterrouten.
+                        Die Dolomiten bieten eine breite Palette von Kletterrouten für alle Niveaus, vom Anfänger bis
+                        zum Experten. Sie werden von den atemberaubenden Aussichten und den einzigartigen
+                        Felsformationen begeistert sein.</p>
+                    <p>Preis: CHF 55</p>
+                    <p>Bewertung: ★★★★☆</p>
+                </div>
+            </div>
+            <div class="tour">
+                <img src="images/paragliding-tour.jpg" alt="Tour 5">
+                <div>
+                    <h3>Paragliding-Tour</h3>
+                    <p>Erleben Sie die Dolomiten aus der Vogelperspektive auf einer atemberaubenden Paragliding-Tour.
+                        Schweben Sie hoch über den majestätischen Bergen und genießen Sie das Gefühl grenzenloser
+                        Freiheit in der klaren Bergluft.</p>
+                    <p>Preis: CHF 70</p>
+                    <p>Bewertung: ★★★★★</p>
+                </div>
+            </div>
+            <div class="tour">
+                <img src="images/rafting-tour.jpg" alt="Tour 6">
+                <div>
+                    <h3>Rafting-Tour</h3>
+                    <p>Spüren Sie den Nervenkitzel des Wildwassers auf unseren aufregenden Rafting-Touren durch die
+                        Flüsse der Dolomiten. Mit erfahrenen Guides an Ihrer Seite meistern Sie die Stromschnellen und
+                        genießen dabei die spektakuläre Landschaft.</p>
+                    <p>Preis: CHF 45</p>
+                    <p>Bewertung: ★★★★☆</p>
+                </div>
+            </div>
+        </section>
+        <h1>Anmeldung zur Tour</h1>
+        <p>Bitte fülle das Formular aus, um dich für eine Tour anzumelden.</p>
+        <section class="form">
+            <form id="form" method="post" style="display: flex;">
+                <label for="vorname">Vorname:</label>
+                <input type="text" id="vorname" name="vorname">
+                <label for="nachname">Nachname:</label>
+                <input type="text" id="nachname" name="nachname">
+                <label for="email">E-Mail:</label>
+                <input type="email" id="email" name="email" placeholder="max.muster@hotmail.com">
+                <label for="telefonnummer">Telefonnummer:</label>
+                <input type="tel" id="telefonnummer" name="telefonnummer" placeholder="0390000000 ">
+                <label for="tour">Tour:</label>
+                <select id="tour" name="tour">
+                    <option value="" disabled selected> - Bitte wähle eine Tour - </option>
+                    <option value="mountainbike">Mountainbike-Tour</option>
+                    <option value="skitour">Skitour</option>
+                    <option value="wandertour">Wandertour</option>
+                    <option value="kayaktour">Kayak-Tour</option>
+                    <option value="hikingtour">Hiking-Tour</option>
+                    <option value="rockclimbingtour">Rock Climbing-Tour</option>
+                    <option value="paraglidingtour">Paragliding-Tour</option>
+                    <option value="raftingtour">Rafting-Tour</option>
+                </select>
+                <label for="date">Datum:</label>
+                <input type="date" id="date" name="date">
+                <input type="submit" id="submit" value="Senden">
+            </form>
+            <div id="spinner" style="display: none;">
+                Loading...
+            </div>
+            <div id="overlay" class="hidden"></div>
+            <div id="form-popup" class="hidden">
+                <h2 id="popup-message">ahfsajdfkljasldkj</h2>
+                <button id="popup-button">OK</button>
+            </div>
+        </section>
+    </main>
+    <footer>
+        <div class="footer-content">
+            <div class="contact-info">
+                <h3>Adresse:</h3>
+                <p>S.da Nives, 36, 39048 Selva di Val Gardena </p>
+                <h3>Kontakt:</h3>
+                <p>info@mtdolomites.it</p>
+            </div>
+            <div class="social-media">
+                <h3>Folge uns</h3>
+                <a href="https://www.facebook.com" target="_blank"><img src="images/sozialmedia/facebook.png"
+                        alt="Facebook"></a>
+                <a href="https://www.instagram.com" target="_blank"><img src="images/sozialmedia/instagram.png"
+                        alt="Instagram"></a>
+                <a href="https://www.linkedin.com" target="_blank"><img src="images/sozialmedia/linkedin.png"
+                        alt="LinkedIn"></a>
+                <a href="https://www.youtube.com" target="_blank"><img src="images/sozialmedia/youtube.png"
+                        alt="YouTube"></a>
+            </div>
+            <div class="copyright">
+                <hr>
+                <p>2024 MTDolomites | Gruppe 1: Reichlin & Tita | Das ist ein Schulprojekt und keine reale Webseite</p>
+            </div>
+        </div>
+    </footer>
+    <script src="js/index.js"></script>
+    <script src="js/nav.js"></script>
+    <script src="js/databaseClient.js"></script>
+    <script src="js/form.js"></script>
+</body>
+
+</html>
